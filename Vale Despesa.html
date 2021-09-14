@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <title>Vale Despesa</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+
+</head>
+<body style="background-color: #F8F8F8; position: relative; height: auto; ">
+
+  <main class="index-main">
+  <div class="form">
+
+    <div class="container-fluid" style="background-color: #FFFFFF; border: #000000; margin-top: 15px; margin-left: 15px; margin-bottom: 15px; margin-right: 15px; padding-top: 10px;padding-bottom: 10px;">
+  <div>
+    <img src="http://www.bosal.com/themes/itr_theme/images/logo-bosal.png" style="margin-bottom: 10px;"><br>
+    <b><h5>VALE DESPESA</h5></b>
+  </div>
+
+</div>
+  
+<div class="container-fluid" style="background-color: #FFFFFF; border: #000000; margin-top: 15px; margin-left: 15px; margin-bottom: 15px; margin-right: 15px; padding-top: 10px; padding-bottom: 10px;">
+  <div class="row"style="margin-top: 20px;">
+    <div class="col-4">
+    <label style="margin-right: 15px;">Valor em Adiantamento:</label>
+    <select for="dinheiro" type="moeda" id="Moedas" name="Moedas" >
+                            <option value="">BRL</option>
+                            <option value="">EUR</option>
+                            <option value="">USD</option>
+                            <option value="">ARS</option>
+                        </select>
+    <input type="text"  id="txt1" onblur="calcular()" name="dinheiro" class="dinheiro form-control" style="width: 150px;">
+    </div>
+    <div class="col-4">
+    <label style="margin-right: 15px;">Valor em Despesas:</label>
+      <select for="dinheiro" type="moeda" id="Moedas" name="Moedas" >
+                            <option value="">BRL</option>
+                            <option value="">EUR</option>
+                            <option value="">USD</option>
+                            <option value="">ARS</option>
+                        </select>
+    <input type="text"  id="txt2" onfocus="calcular()" name="dinheiro" class="dinheiro form-control" style="width: 150px;" value="20" disabled>
+    </div>
+</div>
+</div>
+
+<div class="container-fluid" style="background-color: #FFFFFF; border: #000000; margin-top: 15px; margin-left: 15px; margin-bottom: 15px; margin-right: 15px; padding-top: 10px; padding-bottom: 10px;">
+  <div class="row"style="margin-top: 20px;">
+    <div class="col-4">
+      <label style="margin-right: 10px;">Saldo a:</label>
+    <select name="mySelect">
+      <option value="Devolver">Devolver</option> 
+      <option value="Receber">Receber</option>
+    </select>   
+  </div>
+    <div class="col-4">
+    <select for="dinheiro" type="moeda" id="Moedas" name="Moedas" >
+                            <option value="">BRL</option>
+                            <option value="">EUR</option>
+                            <option value="">USD</option>
+                            <option value="">ARS</option>
+                        </select>
+    <input type="text"  id="result" name="dinheiro" class="dinheiro form-control" style="width: 150px;" disabled>
+    </div>
+</div>
+</div>
+
+<div class="container-fluid" style="background-color: #FFFFFF; border: #000000; margin-top: 15px; margin-left: 15px; margin-bottom: 15px; margin-right: 15px; padding-top: 10px; padding-bottom: 10px;">
+  <div class="row"style="margin-top: 20px;">
+    <div class="col-4">
+    <label style="margin-right: 10px;">Data:</label>
+    <input id="date" type="date">
+    </div>
+    <div class="col-4">
+    <label style="margin-right: 10px;">Nome:</label>
+    <input type="text" style="width: 300px;">
+    </div>
+    <div class="col-4">
+    <label style="margin-right: 10px;">CC:</label>
+    <input type="text">
+    </div>
+    </div>
+</div>
+
+<div class="container-fluid" style="background-color: #FFFFFF; border: #000000; margin-top: 15px; margin-left: 15px; margin-bottom: 15px; margin-right: 15px; padding-top: 10px; padding-bottom: 10px;">
+  <div class="row"style="margin-top: 20px;">
+    <div class="col">
+        <label style="margin-right: 10px;">Selecione a despesa:</label>
+        <select id="mySelect">
+          <option value="Telefonemas">Telefonemas</option>
+          <option value="Postagens">Postagens</option>  
+          <option value="Papelaria">Papelaria</option>  
+          <option value="Refeição">Refeição</option>  
+          <option value="Ônibus / Metrô / Taxi">Ônibus / Metrô / Taxi</option>  
+          <option value="Estacionamento / Pedágio">Estacionamento / Pedágio</option>  
+          <option value="Quilometragem">Quilometragem</option>  
+          <option value="Combustível">Combustível</option>  
+          <option value="Lavagem">Lavagem</option>  
+          <option value="Jornais / Revistas">Jornais / Revistas</option> 
+          <option value="Outros (Especificar)">Outros (Especificar)</option>   
+        </select>
+        <div id="inputOculto">
+            <input type="text" style="" />
+        </div>                     
+</div>
+
+<div class="col">
+    <label style="margin-right: 10px;">Valor:</label>
+    <input type="text"/>  
+</div>
+
+<div class="col" style="width: 20px;">
+    <button type="button" value="Adicionar" style="background-color: #cccccc; font-style: #000000;">Adicionar</button>
+</div>
+
+<div id="inpu" class="col">
+    <label style="margin-right: 15px;">TOTAL:</label>
+      <input type="text"  id="dinheiro" name="dinheiro" class="dinheiro form-control" style="width: 150px;" disabled>
+</div>
+</div>
+
+</div>
+
+<div class="container-fluid" style="background-color: #FFFFFF; border: #000000; margin-top: 15px; margin-left: 15px; margin-bottom: 15px; margin-right: 15px; padding-top: 10px; padding-bottom: 10px;">
+  <h4>Observações / Histórico</h4>
+  <div class="row" style="padding-left: 20px;">
+  <textarea style="margin-left: auto;margin-right: auto;" name="mytextarea" id="txtarea" rows="4" cols="100" value="Descrição / Justificativa das Despesas"></textarea>
+  </div>
+<br>
+<div style="padding-left: 15px;">
+  <input type="submit" value="Enviar" style="background-color: #ED1B2F; border-color: #000000; color: #ffffff; width: 130px; height: 40px;" onClick="window.print(); return true">
+</div>
+</div>
+
+<div><br>
+  <h4 style="color: red;">ATENÇÃO!!!</h4>
+  <label>Preencher apenas os campos em <b>BRANCO</b>. <br>  Os demais campos serão calculados automaticamente. Após impressão, juntar os comprovantes (Tickets, NFs, Formulário de KM, etc) de cada item.  <br> <b> SEMPRE INFORMAR O CENTRO DE CUSTO QUE ESTÁ CONSUMINDO A DESPESA. </b> <br> Em caso de dúvidas, favor contatar a Controladoria Financeira. </label>
+</div>
+
+</div>
+</main>
+</body>
+
+<script type="text/javascript">
+    
+ $(document).ready(function() {
+  $('#inputOculto').hide();
+  $('#mySelect').change(function() {
+    if ($('#mySelect').val() == 'Outros (Especificar)') {
+      $('#inputOculto').show();
+    } else {
+      $('#inputOculto').hide();
+    }
+  });
+});
+
+ function calcular(){
+    var valor1 = parseInt(document.getElementById('txt1').value, 10);
+    var valor2 = parseInt(document.getElementById('txt2').value, 10);
+    document.getElementById('result').value = valor1 - valor2;
+}
+
+
+ $('.dinheiro').mask('#.##0,00', {reverse: true});
+
+</script>
+
+<style type="text/css">
+    
+     .container-fluid{
+    width: auto;
+  }
+
+  h3 {
+    font-size: 22px;
+  }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.form-control {
+        display: initial;
+    }
+
+div {
+      text-align: center;
+    }
+
+</style>
+
+</html>
